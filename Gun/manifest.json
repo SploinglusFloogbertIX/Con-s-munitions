@@ -1,0 +1,20 @@
+{
+  "version": "0.1.61.1",
+  "guid": "b55fd2b0-f955-4554-ba7f-baf551852232",
+  "name": "Con\u0027s munitions",
+  "description": "Mod that includes weapons n stuff",
+  "url": null,
+  "git": "https://github.com/SploinglusFloogbertIX/Con-s-munitions.git",
+  "authors": ["Conlari"],
+  "dependencies": [
+    {
+      "identifier": "TC2.Core",
+      "required": true
+    },
+    {
+      "identifier": "TC2.Base",
+      "required": true
+    }
+  ],
+  "tags": []
+}

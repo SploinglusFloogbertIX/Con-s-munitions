@@ -1,0 +1,13 @@
+<Project>
+	<PropertyGroup>
+		<DefineConstants>SERVER</DefineConstants>
+	</PropertyGroup>
+
+	<Import Project="$(ProjectDir)Mod.Shared.props"/>
+	<Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+	<Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+
+	<ItemGroup>
+		<Reference Include="TC2.Server" />
+	</ItemGroup>
+</Project>

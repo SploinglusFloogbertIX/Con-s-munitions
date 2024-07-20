@@ -1,0 +1,95 @@
+<Project>
+	<Import Project="$(ProjectDir)Mod.Generated.props" />
+
+	<Target Name="CoreCompile" />
+	<Target Name="CoreBuild" />
+	<Target Name="CorePublish" />
+	<Target Name="PostBuildEvent"/>
+	<Target Name="PreBuildEvent" />
+
+	<PropertyGroup>
+		<UseCommonOutputDirectory>true</UseCommonOutputDirectory>
+		<BaseOutputPath>local\bin\</BaseOutputPath>
+		<BaseIntermediateOutputPath>local\obj\</BaseIntermediateOutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+
+		<LangVersion>preview</LangVersion>
+		<TargetFramework>net9.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<Optimize>true</Optimize>
+		<Platforms>x64</Platforms>
+		<Configurations>Release;Debug</Configurations>
+		<EnablePreviewFeatures>true</EnablePreviewFeatures>
+
+		<SkipCopyBuildProduct>true</SkipCopyBuildProduct>
+		<ProduceOnlyReferenceAssembly>false</ProduceOnlyReferenceAssembly>
+		<ProduceReferenceAssemblies>false</ProduceReferenceAssemblies>
+		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+		<AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+		<MSBuildAllProjects>false</MSBuildAllProjects>
+		<GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles>
+		<GenerateDependencyFile>False</GenerateDependencyFile>
+		<DebugSymbols>false</DebugSymbols>
+		<HasRuntimeOutput>false</HasRuntimeOutput>
+		<ComputeNETCoreBuildOutputFiles>false</ComputeNETCoreBuildOutputFiles>
+		<DebugType>none</DebugType>
+
+		<DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+
+		<AssemblySearchPaths>$(AssemblySearchPaths);$(GameDir)</AssemblySearchPaths>
+
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		<EnableDefaultContentItems>false</EnableDefaultContentItems>
+		<EnableDefaultItems>false</EnableDefaultItems>
+
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+		<RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+		<AnalysisMode>preview</AnalysisMode>
+
+		<RootNamespace>$(ModIdentifier)</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup Condition="!$(ModIdentifier.Contains('TC2.Core'))">
+		<Compile Include="$(GameDir)Mods\TC2.Core\Content\**\*.cs" Link="TC2.Core\%(RecursiveDir)%(Filename)%(Extension)"/>
+		<None Include="$(GameDir)Mods\TC2.Core\Content\**\*">
+			<Link>TC2.Core\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup Condition="!$(ModIdentifier.Contains('TC2.Core')) And !$(ModIdentifier.Contains('TC2.Base'))">
+		<Compile Include="$(GameDir)Mods\TC2.Base\Content\**\*.cs" Link="TC2.Base\%(RecursiveDir)%(Filename)%(Extension)"/>
+		<None Include="$(GameDir)Mods\TC2.Base\Content\**\*">
+			<Link>TC2.Base\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="$(ProjectDir)Content\**\*.cs" Link="$(ModIdentifier)\%(RecursiveDir)%(Filename)%(Extension)"/>
+		<None Include="$(ProjectDir)Content\**\*">
+			<Link>$(ModIdentifier)\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="System.Private.CoreLib.dll" />
+		<Reference Include="System.Runtime.dll" />
+		<Reference Include="System.Numerics.dll" />
+		<Reference Include="System.Numerics.Vectors.dll" />
+		<Reference Include="System.Collections.dll" />
+		<Reference Include="System.Collections.Immutable.dll" />
+		<Reference Include="System.Linq.dll" />
+		<Reference Include="System.Memory.dll" />
+
+		<Reference Include="Silk.NET.Maths.dll" />
+		<Reference Include="UniTask.dll" />
+		<Reference Include="Hjson.dll" />
+		<Reference Include="MessagePack.Annotations.dll"/>
+		<Reference Include="netstandard.dll"/>
+	</ItemGroup>
+</Project>

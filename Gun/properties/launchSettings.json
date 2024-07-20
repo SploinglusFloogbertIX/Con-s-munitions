@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Localhost (Quickstart)": {
+      "commandName": "Executable",
+      "commandLineArgs": "--quick-start",
+      "executablePath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\TerritoryControl2\\TC2.Client.exe",
+      "workingDirectory": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\TerritoryControl2"
+    },
+    "Localhost (Normal)": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\TerritoryControl2\\TC2.Client.exe",
+      "workingDirectory": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\TerritoryControl2"
+    }
+  }
+}
